@@ -2,11 +2,38 @@
 
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
+<div class="col-md-8 offset-md-2">
 
 {% if user.is_authenticated %}
 
-<h1>Hello World</h1>
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">OpCo</th>
+        <th scope="col">Department</th>
+        <th scope="col">Created At</th>
+        <th scope="col">ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    {% if records %}
+        {% for record in records %}
+        <tr>
+            <td> {{ record.first_name }} {{ record.last_name }} </td>
+            <td>{{ record.email }} </td>
+            <td>{{ record.opco }} </td>
+            <td>{{ record.department }} </td>
+            <td>{{ record.created_at }} </td>
+            <td><a href="{% url 'user_record' record.id %}">{{ record.id }}</a></td>
+        </tr>
+    {% endfor %}
+{% endif %}
+
+    </tbody>
+</table>
 
 {% else %}
 
