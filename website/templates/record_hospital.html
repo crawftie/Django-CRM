@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        {{ record_hospital.hospital_name }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <strong>Name: </strong>{{ record_hospital.hospital_name }}<br/>
+        <strong>Address: </strong>{{ record_hospital.hospital_address }}<br/>
+        <strong>Postcode: </strong>{{ record_hospital.hospital_postcode }}<br/>
+        <strong>Email: </strong>{{ record_hospital.hospital_email_address }}<br/>
+        <strong>Phone Number: </strong>{{ record_hospital.hospital_phone_number }}<br/>
+        <strong>Doctors: </strong>{% for doctor in record_hospital.hospital_doctors.all %}
+        <a href="{% url 'record_doctor' doctor.id %}">{{ doctor }}</a>
+        {% endfor %}<br/>
+      </p>
+
+    </div>
+  </div>
+<br/>
+  <a href="{% url 'list_hospitals' %}" class ="btn btn-secondary">Back</a>
+{% endblock %}

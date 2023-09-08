@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    /* setting the text-align property to center*/
+    td {
+        padding: 5px;
+        text-align: center;
+    }
+</style>
+
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Specialism</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% if list_specialisms %}
+            {% for specialism in list_specialisms %}
+            <tr>
+                <td>{{ specialism.specialism_name }} </td>
+                <td>{{ specialism.specialism_description }} </td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+
+</table>
+
+    <a href="{% url 'add_specialism' %}" class ="btn btn-danger">Add Specialism</a>
+
+{% endblock %}

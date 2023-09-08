@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Doctors at {{ hospital.hospital_name }}</h2>
+
+<ul>
+    {% for doctor in doctors %}
+        <li>{{ doctor.doctor_first_name }} {{ doctor.doctor_last_name }}</li>
+    {% empty %}
+        <li>No doctors found for this hospital.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'list_hospitals' %}" class="btn btn-secondary">Back to Hospitals</a>
+
+{% endblock %}

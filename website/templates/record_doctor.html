@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        {{ record_doctor.doctor_first_name }} {{ record_doctor.doctor_last_name }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <strong>Name: </strong>{{ record_doctor.doctor_first_name }} {{ record_doctor.doctor_last_name }}<br/>
+        <strong>Email: </strong>{{ record_doctor.doctor_email_address }}<br/>
+        <strong>Specialism: </strong>{{ record_doctor.doctor_specialism }}<br/>
+      </p>
+
+    </div>
+  </div>
+<br>
+  <a href="{% url 'list_doctors' %}" class ="btn btn-secondary">Back</a>
+{% endblock %}

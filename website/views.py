@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .Forms import SignUpForm, AddUserRecordForm
-from.models import Record
+from .Forms import SignUpForm, AddUserRecordForm, AddSpecialismRecordForm, AddDoctorRecordForm, AddHospitalRecordForm
+from.models import Record, Hospital_Record, Doctor_Record, Doctor_Specialism
 
 # views 
 def home(request):
@@ -88,4 +88,94 @@ def update_user_record(request, pk):
 	else:
 		messages.success(request, "You have to be logged in")
 		return redirect('home')
-			
+	
+def list_hospitals(request):
+	list_hospitals = Hospital_Record.objects.all()
+	return render(request, 'list_hospitals.html', {'list_hospitals':list_hospitals})
+
+def list_doctors(request):
+	list_doctors = Doctor_Record.objects.all()
+	return render(request, 'list_doctors.html', {'list_doctors':list_doctors})
+
+def list_specialisms(request):
+	list_specialisms = Doctor_Specialism.objects.all()
+	return render(request, 'list_specialisms.html', {'list_specialisms':list_specialisms})
+
+def add_specialism(request):
+		form = AddSpecialismRecordForm(request.POST or None)
+		if request.user.is_authenticated:
+			if request.method == "POST":
+				if form.is_valid():
+					add_specialism = form.save()
+					messages.success(request, "Specialism Record Added")
+					return redirect('list_specialisms')
+			return render(request, 'add_specialism.html', {'form':form})
+		else:
+			messages.success(request, "You have to be logged in to make a new specialism")
+			return redirect('home')
+
+def add_doctor(request):
+		form = AddDoctorRecordForm(request.POST or None)
+		if request.user.is_authenticated:
+			if request.method == "POST":
+				if form.is_valid():
+					add_doctor = form.save()
+					messages.success(request, "Doctor Record Added")
+					return redirect('list_doctors')
+			return render(request, 'add_doctor.html', {'form':form})
+		else:
+			messages.success(request, "You have to be logged in to add a new Doctor")
+			return redirect('home')
+		
+def add_hospital(request):
+		form = AddHospitalRecordForm(request.POST or None)
+		if request.user.is_authenticated:
+			if request.method == "POST":
+				if form.is_valid():
+					add_hospital = form.save()
+					messages.success(request, "Hospital Record Added")
+					return redirect('list_hospitals')
+			return render(request, 'add_hospital.html', {'form':form})
+		else:
+			messages.success(request, "You have to be logged in to add a new Hospital")
+			return redirect('home')
+
+def record_doctor(request, pk):
+	if request.user.is_authenticated:
+		record_doctor = Doctor_Record.objects.get(id=pk)
+		return render(request, 'record_doctor.html', {'record_doctor':record_doctor})
+	else:
+		messages.success(request, "You Must Be Logged In To View That Page...")
+		return redirect('home')
+
+def record_specialism(request, pk):
+	if request.user.is_authenticated:
+		record_specialism = Doctor_Specialism.objects.get(id=pk)
+		return render(request, 'record_specialism.html', {'record_specialism':record_specialism})
+	else:
+		messages.success(request, "You Must Be Logged In To View That Page...")
+		return redirect('home')	
+
+def record_hospital(request, pk):
+	if request.user.is_authenticated:
+		record_hospital = Hospital_Record.objects.get(id=pk)
+		return render(request, 'record_hospital.html', {'record_hospital':record_hospital})
+	else:
+		messages.success(request, "You Must Be Logged In To View That Page...")
+		return redirect('home')	
+
+def list_doctors_by_hospital(request, hospital_id):
+	if request.user.is_authenticated:
+            hospital = get_object_or_404(Hospital_Record, pk=hospital_id)
+            doctors = hospital.hospital_doctors.all()
+            return render(request, 'list_doctors_by_hospital.html', {'hospital': hospital, 'doctors':doctors})
+
+def list_doctors_by_hospitalws(request, hospital_id):
+    try:
+        hospital_id = int(hospital_id)  # Convert to integer
+    except ValueError:
+        return render(request, 'error_page.html', {'message': 'Invalid hospital ID'})
+
+    hospital = get_object_or_404(Hospital_Record, pk=hospital_id)
+    doctors = hospital.hospital_doctors.all()
+    return render(request, 'list_doctors_by_hospital.html', {'hospital': hospital, 'doctors': doctors})				

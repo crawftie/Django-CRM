@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    /* setting the text-align property to center*/
+    td {
+        padding: 5px;
+        text-align: center;
+    }
+</style>
+
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Postcode</th>
+        <th scope="col">Email Address</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Doctors</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% if list_hospitals %}
+        {% for hospital in list_hospitals %}
+        <tr>
+            <td>{{ hospital.hospital_name }} </td>
+            <td>{{ hospital.hospital_address }} </td>
+            <td>{{ hospital.hospital_postcode }} </td>
+            <td>{{ hospital.hospital_email_address }} </td>
+            <td>{{ hospital.hospital_phone_number }} </td>
+            <td>
+                <a href="{% url 'list_doctors_by_hospital' hospital.id %}">View Doctors</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endif %}
+
+</table>
+
+<a href="{% url 'add_hospital' %}" class ="btn btn-danger">Add Hospital</a>
+
+{% endblock %}
