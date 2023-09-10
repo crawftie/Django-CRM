@@ -21,6 +21,7 @@
       <tr>
         <th scope="col">Specialism</th>
         <th scope="col">Description</th>
+        <th scope="col">Details</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,9 @@
             <tr>
                 <td>{{ specialism.specialism_name }} </td>
                 <td>{{ specialism.specialism_description }} </td>
+                <td>
+                    <a href="{% url 'record_specialism' specialism.id %}">View Details</a>
+                </td>
             </tr>
         {% endfor %}
     {% endif %}

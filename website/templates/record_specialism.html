@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        {{ record_specialism.specialism_name }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <strong>Specialism: </strong>{{ record_specialism.specialism_name }}<br/>
+        <strong>Specialism Description: </strong>{{ record_specialism.specialism_description }}<br/>
+        <br/>
+      </p>
+
+    </div>
+  </div>
+<br/>
+  <a href="{% url 'list_specialisms' %}" class ="btn btn-secondary">Back</a>
+
+  <a href="{% url 'delete_specialism' record_specialism.id %}" class ="btn btn-danger">Delete</a>
+
+  <a href="{% url 'update_specialism' record_specialism.id %}" class ="btn btn-danger">Update</a>
+
+{% endblock %}

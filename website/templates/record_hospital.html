@@ -21,4 +21,8 @@
   </div>
 <br/>
   <a href="{% url 'list_hospitals' %}" class ="btn btn-secondary">Back</a>
+
+  <a href="{% url 'delete_hospital' record_hospital.id %}" class ="btn btn-danger">Delete</a>
+
+  <a href="{% url 'update_hospital' record_hospital.id %}" class ="btn btn-danger">Update</a>
 {% endblock %}

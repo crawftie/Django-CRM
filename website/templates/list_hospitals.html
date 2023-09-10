@@ -25,6 +25,7 @@
         <th scope="col">Email Address</th>
         <th scope="col">Phone Number</th>
         <th scope="col">Doctors</th>
+        <th scope="col">Hospital Details</th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +39,9 @@
             <td>{{ hospital.hospital_phone_number }} </td>
             <td>
                 <a href="{% url 'list_doctors_by_hospital' hospital.id %}">View Doctors</a>
+            </td>
+            <td>
+                <a href="{% url 'record_hospital' hospital.id %}">View Details</a>
             </td>
         </tr>
     {% endfor %}

@@ -6,9 +6,33 @@
 
 <ul>
     {% for doctor in doctors %}
-        <li>{{ doctor.doctor_first_name }} {{ doctor.doctor_last_name }}</li>
+    <br>
+        <div class="card">
+            <div class="card-header">
+                {{ doctor.doctor_first_name }} {{ doctor.doctor_last_name }}
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <strong>Name: </strong>{{ doctor.doctor_first_name }} {{ doctor.doctor_last_name }}<br/>
+                <strong>Email: </strong>{{ doctor.doctor_email_address }}<br/>
+                <strong>Specialism: </strong>{{ doctor.doctor_specialism }}<br/>
+              </p>
+            </div>
+        </div>
+    <br/>
     {% empty %}
-        <li>No doctors found for this hospital.</li>
+    <br>
+        <div class="card">
+            <div class="card-header">
+                There are no Doctors at this Hospital.
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <strong>Error: </strong> There are no Doctors at this hospital. <br/>
+              </p>
+            </div>
+        </div>
+    <br/>
     {% endfor %}
 </ul>
 

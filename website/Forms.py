@@ -59,14 +59,18 @@ class AddDoctorRecordForm(ModelForm):
                 'doctor_specialism': forms.Select(attrs={"placeholder":"Doctor Specialism", "class":"form-select"}),
         }
 
-class AddSpecialismRecordForm(forms.ModelForm):
-    specialism_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Specialism Name", "class":"form-control"}), label="")
-    specialism_description = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Specialism Description", "class":"form-control"}), label="")
-
+class AddSpecialismRecordForm(ModelForm):
     class Meta:
         model = Doctor_Specialism
         fields = ('specialism_name', 'specialism_description')
-        exclude = ("user",)
+        labels = {
+            'specialism_name': '',
+            'specialism_description': ''
+        }
+        widgets = {
+            'specialism_name': forms.TextInput(attrs={"placeholder":"Specialism Name", "class":"form-control"}),
+            'specialism_description': forms.TextInput(attrs={"placeholder":"Specialism Description", "class":"form-control"}),
+        }
 
 class AddHospitalRecordForm(ModelForm):
         class Meta:

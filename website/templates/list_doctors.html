@@ -32,7 +32,7 @@
             <td>{{ doctor.doctor_first_name }} {{ doctor.doctor_last_name }}</td>
             <td>{{ doctor.doctor_email_address }} </td>
             <td>{{ doctor.doctor_specialism }} </td>
-            <td><a href="{% url 'record_doctor' doctor.id %}">{{ doctor.id }}</a></td>           
+            <td><a href="{% url 'record_doctor' doctor.id %}">View Details</a></td>           
         </tr>
     {% endfor %}
 {% endif %}

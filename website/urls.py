@@ -20,4 +20,10 @@ urlpatterns = [
     path('record_hospital/<int:pk>', views.record_hospital, name='record_hospital'),
     path('record_specialism/<int:pk>', views.record_specialism, name='record_specialism'),
     path('list_doctors_by_hospital/<int:hospital_id>/', views.list_doctors_by_hospital, name='list_doctors_by_hospital'),
+    path('update_specialism/<int:pk>', views.update_specialism, name='update_specialism'),
+    path('update_doctor/<int:pk>', views.update_doctor, name='update_doctor'),
+    path('update_hospital/<int:pk>', views.update_hospital, name='update_hospital'),
+    path('delete_hospital/<int:pk>', views.delete_hospital, name='delete_hospital'),
+    path('delete_doctor/<int:pk>', views.delete_doctor, name='delete_doctor'),
+    path('delete_specialism/<int:pk>', views.delete_specialism, name='delete_specialism'),
 ]

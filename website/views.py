@@ -170,12 +170,71 @@ def list_doctors_by_hospital(request, hospital_id):
             doctors = hospital.hospital_doctors.all()
             return render(request, 'list_doctors_by_hospital.html', {'hospital': hospital, 'doctors':doctors})
 
-def list_doctors_by_hospitalws(request, hospital_id):
-    try:
-        hospital_id = int(hospital_id)  # Convert to integer
-    except ValueError:
-        return render(request, 'error_page.html', {'message': 'Invalid hospital ID'})
-
-    hospital = get_object_or_404(Hospital_Record, pk=hospital_id)
-    doctors = hospital.hospital_doctors.all()
-    return render(request, 'list_doctors_by_hospital.html', {'hospital': hospital, 'doctors': doctors})				
+def update_specialism(request, pk):
+	if request.user.is_authenticated:
+		current_specialism_record = Doctor_Specialism.objects.get(id=pk)
+		form = AddSpecialismRecordForm(request.POST or None, instance=current_specialism_record)
+		if form.is_valid():
+			form.save()
+			messages.success(request, "Specialism Record has been updated")
+			return redirect('home')
+		return render(request, 'update_specialism.html', {'form':form})
+	else:
+		messages.success(request, "You have to be logged in")
+		return redirect('home')
+	
+def update_hospital(request, pk):
+	if request.user.is_authenticated:
+		current_specialism_record = Hospital_Record.objects.get(id=pk)
+		form = AddHospitalRecordForm(request.POST or None, instance=current_specialism_record)
+		if form.is_valid():
+			form.save()
+			messages.success(request, "Hospital Record has been updated")
+			return redirect('home')
+		return render(request, 'update_hospital.html', {'form':form})
+	else:
+		messages.success(request, "You have to be logged in")
+		return redirect('home')	
+	
+def update_doctor(request, pk):
+	if request.user.is_authenticated:
+		current_specialism_record = Doctor_Record.objects.get(id=pk)
+		form = AddDoctorRecordForm(request.POST or None, instance=current_specialism_record)
+		if form.is_valid():
+			form.save()
+			messages.success(request, "Doctor Record has been updated")
+			return redirect('home')
+		return render(request, 'update_doctor.html', {'form':form})
+	else:
+		messages.success(request, "You have to be logged in")
+		return redirect('home')	
+	
+def delete_specialism(request, pk):
+	if request.user.is_authenticated and request.user.is_superuser:
+		delete_specialism = Doctor_Specialism.objects.get(id=pk)
+		delete_specialism.delete()
+		messages.success(request, "You have deleted this Specialism")
+		return redirect('home')
+	else:
+		messages.success(request, "You have to be logged in to delete this")
+		return redirect('home')
+	
+def delete_hospital(request, pk):
+	if request.user.is_authenticated and request.user.is_superuser:
+		delete_hospital = Hospital_Record.objects.get(id=pk)
+		delete_hospital.delete()
+		messages.success(request, "You have deleted this Hospital")
+		return redirect('home')
+	else:
+		messages.success(request, "You have to be an admin in to delete this")
+		return redirect('home')
+	
+def delete_doctor(request, pk):
+	if request.user.is_authenticated and request.user.is_superuser:
+		delete_doctor = Doctor_Record.objects.get(id=pk)
+		delete_doctor.delete()
+		messages.success(request, "You have deleted this Doctor")
+		return redirect('home')
+	else:
+		messages.success(request, "You have to be logged in to delete this")
+		return redirect('home')
