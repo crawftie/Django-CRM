@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+# Get env variables 
+DB_USERNAME = os.environ.get('DB_USERNAME')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.connect',
         'NAME': 'SDA',
-        'USER': 'gxzylpqzdb',
-        'PASSWORD': 'Django_Crawftie!',
+        'USER': DB_USERNAME,
+        'PASSWORD': DB_PASSWORD,
         'HOST': 'software-engineering-and-agile-server.mysql.database.azure.com',
         'PORT': '3306',
     }
