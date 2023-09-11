@@ -17,8 +17,8 @@
 <br/>
   <a href="{% url 'list_specialisms' %}" class ="btn btn-secondary">Back</a>
 
-  <a href="{% url 'delete_specialism' record_specialism.id %}" class ="btn btn-danger">Delete</a>
+  <a href="{% url 'update_specialism' record_specialism.id %}" class ="btn btn-warning">Update</a>
 
-  <a href="{% url 'update_specialism' record_specialism.id %}" class ="btn btn-danger">Update</a>
+  <a href="{% url 'delete_specialism' record_specialism.id %}" class ="btn btn-danger">Delete</a>
 
 {% endblock %}

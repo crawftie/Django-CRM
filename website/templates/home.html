@@ -6,62 +6,7 @@
 
 {% if user.is_authenticated %}
 
-<table class="table table-hover table-bordered">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">OpCo</th>
-        <th scope="col">Department</th>
-        <th scope="col">Created At</th>
-        <th scope="col">ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-    {% if records %}
-        {% for record in records %}
-        <tr>
-            <td> {{ record.first_name }} {{ record.last_name }} </td>
-            <td>{{ record.email }} </td>
-            <td>{{ record.opco }} </td>
-            <td>{{ record.department }} </td>
-            <td>{{ record.created_at }} </td>
-            <td><a href="{% url 'user_record' record.id %}">{{ record.id }}</a></td>
-        </tr>
-    {% endfor %}
-{% endif %}
-
-    </tbody>
-</table>
-
-<table class="table table-hover table-bordered">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Postcode</th>
-        <th scope="col">Email Address</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">Doctors</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-    {% if list_hospitals %}
-        {% for hospital in list_hospitals %}
-        <tr>
-            <td>{{ hospital.hospital_name }} </td>
-            <td>{{ hospital.hospital_address }} </td>
-            <td>{{ hospital.hospital_postcode }} </td>
-            <td>{{ hospital.hospital_email_address }} </td>
-            <td>{{ hospital.hospital_doctors }} </td>
-        </tr>
-    {% endfor %}
-{% endif %}
-
-    </tbody>
-</table>
+<h1>You are Logged In!</h1>
 
 {% else %}
 

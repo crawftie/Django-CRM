@@ -2,8 +2,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm
-from .models import Record, Doctor_Specialism, Doctor_Record, Hospital_Record
+from .models import Doctor_Specialism, Doctor_Record, Hospital_Record
 
+# Form for signing up a new User of the system
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email'}))
     first_name = forms.CharField(label="", max_length="100", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'First Name'}))
@@ -31,17 +32,7 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
 
-class AddUserRecordForm(forms.ModelForm):
-    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"First Name", "class":"form-control"}), label="")
-    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Last Name", "class":"form-control"}), label="")
-    email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Email", "class":"form-control"}), label="")
-    opco = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"OpCo", "class":"form-control"}), label="")
-    department = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Department", "class":"form-control"}), label="")
-
-    class Meta:
-        model = Record
-        exclude = ("user",)
-
+# Form for creating / updating a Doctor Record
 class AddDoctorRecordForm(ModelForm):
     class Meta:
         model = Doctor_Record
@@ -59,6 +50,7 @@ class AddDoctorRecordForm(ModelForm):
                 'doctor_specialism': forms.Select(attrs={"placeholder":"Doctor Specialism", "class":"form-select"}),
         }
 
+# Form for creating / updating a Doctor Specialism Record
 class AddSpecialismRecordForm(ModelForm):
     class Meta:
         model = Doctor_Specialism
@@ -72,6 +64,7 @@ class AddSpecialismRecordForm(ModelForm):
             'specialism_description': forms.TextInput(attrs={"placeholder":"Specialism Description", "class":"form-control"}),
         }
 
+# Form for creating / updating a Hospital Record
 class AddHospitalRecordForm(ModelForm):
         class Meta:
             model = Hospital_Record

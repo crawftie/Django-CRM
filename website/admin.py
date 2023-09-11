@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Record, Doctor_Record, Hospital_Record, Doctor_Specialism
+from .models import Doctor_Record, Hospital_Record, Doctor_Specialism
 
-admin.site.register(Record)
+# Add MySQL DB's to Django Admin Page
 admin.site.register(Doctor_Record)
 admin.site.register(Hospital_Record)
 admin.site.register(Doctor_Specialism)
