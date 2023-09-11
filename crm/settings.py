@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.connect',
         'NAME': 'SDA',
-        'USER': 'root',
-        'PASSWORD': 'James_Raynor2!',
-        'HOST': 'localhost',
+        'USER': 'gxzylpqzdb',
+        'PASSWORD': 'Django_Crawftie!',
+        'HOST': 'software-engineering-and-agile-server.mysql.database.azure.com',
         'PORT': '3306',
     }
 }
