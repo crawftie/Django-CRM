@@ -15,9 +15,9 @@
     </div>
   </div>
 <br>
-  <a href="{% url 'list_doctors' %}" class ="btn btn-secondary">Back</a>
-
-  <a href="{% url 'delete_doctor' record_doctor.id %}" class ="btn btn-danger">Delete</a>
+  <a href="{% url 'list_doctors' %}" class ="btn custom-btn">Back</a>
 
   <a href="{% url 'update_doctor' record_doctor.id %}" class ="btn btn-warning">Update</a>
+
+  <a href="{% url 'delete_doctor' record_doctor.id %}" class ="btn btn-danger">Delete</a>
 {% endblock %}

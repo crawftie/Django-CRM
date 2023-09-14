@@ -1,0 +1,67 @@
+body {
+    background-color: white;
+}
+
+.card-text {
+    font-weight: bold;
+}
+
+.card {
+    display: inline-block;
+    margin: 10px;
+}
+
+.content {
+    text-align: center;
+}
+
+.navbar a.navbar-brand,
+.navbar {
+    font-weight: bold;
+    color: white;
+}
+
+.navbar a.nav-link.disabled[aria-disabled="true"] {
+    font-weight: bold !important;
+    color: white !important;
+}
+
+.navbar-nav {
+    color: white;
+}
+
+.nav-link {
+    color: white;
+    font-weight: bold;
+}
+
+.custom-btn {
+    background-color:  #00008F; /* Your desired color */
+    color: white; /* Set text color to white for better visibility */
+}
+
+table,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px;
+}
+
+/* This is the th selector for table header cells */
+th {
+    background-color: #00008F;
+    color: white; /* Add text color for header cells */
+    font-weight: bold; /* Add font weight for header cells */
+}
+
+.custom-table th {
+    background-color: #00008F;
+    color: white;
+    font-weight: bold;
+}
+
+.card-header {
+    background-color: #00008F; /* Your desired color */
+    color: white; /* Set text color to white for better visibility */
+}

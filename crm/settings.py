@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-sd41gra627p^dlgpuy%ep@!jlhr+=q_!e1yu%on*fk@+b$#35z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['software-engineering-and-agile.azurewebsites.net']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'crm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SDA',
-        'USER': DB_USERNAME,
-        'PASSWORD': DB_PASSWORD,
-        'HOST': 'software-engineering-and-agile-server.mysql.database.azure.com',
+        'USER': 'root',
+        'PASSWORD': 'James_Raynor2!',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
@@ -125,7 +125,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

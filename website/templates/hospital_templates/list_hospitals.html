@@ -2,21 +2,7 @@
 
 {% block content %}
 
-<style>
-    table,
-    th,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    /* setting the text-align property to center*/
-    td {
-        padding: 5px;
-        text-align: center;
-    }
-</style>
-
-<table class="table table-hover table-bordered">
+<table class="table table-hover table-bordered custom-table">
     <thead class="table-dark">
       <tr>
         <th scope="col">Name</th>
@@ -49,6 +35,6 @@
 
 </table>
 
-<a href="{% url 'add_hospital' %}" class ="btn btn-danger">Add Hospital</a>
+<a href="{% url 'add_hospital' %}" class ="btn custom-btn">Add Hospital</a>
 
 {% endblock %}
