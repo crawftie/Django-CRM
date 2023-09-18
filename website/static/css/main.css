@@ -35,9 +35,10 @@ body {
     font-weight: bold;
 }
 
+/* This is a custom Button using the AXA Blue colouring */
 .custom-btn {
-    background-color:  #00008F; /* Your desired color */
-    color: white; /* Set text color to white for better visibility */
+    background-color:  #00008F; 
+    color: white; 
 }
 
 table,
@@ -48,13 +49,14 @@ td {
     padding: 5px;
 }
 
-/* This is the th selector for table header cells */
+
 th {
     background-color: #00008F;
-    color: white; /* Add text color for header cells */
-    font-weight: bold; /* Add font weight for header cells */
+    color: white; 
+    font-weight: bold;
 }
 
+/* This is a custom Table using the AXA Blue colouring */
 .custom-table th {
     background-color: #00008F;
     color: white;
@@ -62,6 +64,6 @@ th {
 }
 
 .card-header {
-    background-color: #00008F; /* Your desired color */
-    color: white; /* Set text color to white for better visibility */
+    background-color: #00008F; 
+    color: white; 
 }
