@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .Forms import SignUpForm, AdminUpdateUserPasswordForm, AddSpecialismRecordForm, AddDoctorRecordForm, AddHospitalRecordForm, UpdateUserForm, UpdateUserPasswordForm
-from.models import Hospital_Record, Doctor_Record, Doctor_Specialism
+from .models import Hospital_Record, Doctor_Record, Doctor_Specialism
 
 # Home Page View and Login View
 

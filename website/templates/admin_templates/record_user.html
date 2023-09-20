@@ -2,23 +2,23 @@
 {% block content %}
 
 <div class="card">
-    <div class="card-header">
-        {{ record_user.first_name }} {{ record_user.last_name }}
-    </div>
-    <div class="card-body">
-      <p class="card-text">
-        <strong>Username: </strong>{{ record_user.username }}<br/>
-        <strong>Name: </strong>{{ record_user.first_name }} {{ record_user.last_name }}<br/>
-        <strong>Email: </strong>{{ record_user.email }}<br/>
-      </p>
-    </div>
+  <div class="card-header">
+    {{ record_user.first_name }} {{ record_user.last_name }}
   </div>
+  <div class="card-body">
+    <p class="card-text">
+      <strong>Username: </strong>{{ record_user.username }}<br />
+      <strong>Name: </strong>{{ record_user.first_name }} {{ record_user.last_name }}<br />
+      <strong>Email: </strong>{{ record_user.email }}<br />
+    </p>
+  </div>
+</div>
 <br>
-  <a href="{% url 'list_users' %}" class ="btn custom-btn">Back</a>
+<a href="{% url 'list_users' %}" class="btn custom-btn">Back</a>
 
-  <a href="{% url 'update_user' record_user.id %}" class ="btn btn-warning">Update</a>
+<a href="{% url 'update_user' record_user.id %}" class="btn btn-warning">Update</a>
 
-  <a href="{% url 'admin_update_user_password' record_user.id %}" class ="btn btn-warning">Update Password</a>
+<a href="{% url 'admin_update_user_password' record_user.id %}" class="btn btn-warning">Update Password</a>
 
-  <a href="{% url 'delete_user' record_user.id %}" class ="btn btn-danger">Delete</a>
+<a href="{% url 'delete_user' record_user.id %}" class="btn btn-danger">Delete</a>
 {% endblock %}

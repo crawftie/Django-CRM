@@ -4,18 +4,18 @@
 
 <table class="table table-hover table-bordered custom-table">
     <thead class="table-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Postcode</th>
-        <th scope="col">Email Address</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">Doctors</th>
-        <th scope="col">Hospital Details</th>
-      </tr>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Postcode</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Doctors</th>
+            <th scope="col">Hospital Details</th>
+        </tr>
     </thead>
     <tbody>
-    {% if list_hospitals %}
+        {% if list_hospitals %}
         {% for hospital in list_hospitals %}
         <tr>
             <td>{{ hospital.hospital_name }} </td>
@@ -30,11 +30,11 @@
                 <a href="{% url 'record_hospital' hospital.id %}">View Details</a>
             </td>
         </tr>
-    {% endfor %}
-{% endif %}
+        {% endfor %}
+        {% endif %}
 
 </table>
 
-<a href="{% url 'add_hospital' %}" class ="btn custom-btn">Add Hospital</a>
+<a href="{% url 'add_hospital' %}" class="btn custom-btn">Add Hospital</a>
 
 {% endblock %}

@@ -4,27 +4,27 @@
 
 <table class="table table-hover table-bordered custom-table">
     <thead class="table-dark">
-      <tr>
-        <th scope="col">Specialism</th>
-        <th scope="col">Description</th>
-        <th scope="col">Details</th>
-      </tr>
+        <tr>
+            <th scope="col">Specialism</th>
+            <th scope="col">Description</th>
+            <th scope="col">Details</th>
+        </tr>
     </thead>
     <tbody>
         {% if list_specialisms %}
-            {% for specialism in list_specialisms %}
-            <tr>
-                <td>{{ specialism.specialism_name }} </td>
-                <td>{{ specialism.specialism_description }} </td>
-                <td>
-                    <a href="{% url 'record_specialism' specialism.id %}">View Details</a>
-                </td>
-            </tr>
+        {% for specialism in list_specialisms %}
+        <tr>
+            <td>{{ specialism.specialism_name }} </td>
+            <td>{{ specialism.specialism_description }} </td>
+            <td>
+                <a href="{% url 'record_specialism' specialism.id %}">View Details</a>
+            </td>
+        </tr>
         {% endfor %}
-    {% endif %}
+        {% endif %}
 
 </table>
 
-    <a href="{% url 'add_specialism' %}" class ="btn custom-btn">Add Specialism</a>
+<a href="{% url 'add_specialism' %}" class="btn custom-btn">Add Specialism</a>
 
 {% endblock %}

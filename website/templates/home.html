@@ -5,65 +5,65 @@
 
 <div>
 
-{% if user.is_authenticated %}
-{% load static %}
+  {% if user.is_authenticated %}
+  {% load static %}
 
-<div class="content">
-  <h1>Welcome to the AXA Healthcare Management Tool</h1>
-  <br/>
-  <h2>Use this portal to Manage Hospitals, Doctors, and their specialisms</h2>
-  <br/>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'HopsitalLogoPNG.png' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <a href="{% url 'list_hospitals' %}" class="card-link">
-            <p class="card-text">View Hospitals</p>
-        </a>
+  <div class="content">
+    <h1>Welcome to the AXA Healthcare Management Tool</h1>
+    <br />
+    <h2>Use this portal to Manage Hospitals, Doctors, and their specialisms</h2>
+    <br />
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+          <img src="{% static 'HopsitalLogoPNG.png' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <a href="{% url 'list_hospitals' %}" class="card-link">
+              <p class="card-text">View Hospitals</p>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'DoctorPNG.png' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <a href="{% url 'list_doctors' %}" class="card-link">
-            <p class="card-text">View Doctors</p>
-        </a>
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+          <img src="{% static 'DoctorPNG.png' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <a href="{% url 'list_doctors' %}" class="card-link">
+              <p class="card-text">View Doctors</p>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'SpecialismPNG2.png' %}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <a href="{% url 'list_specialisms' %}" class="card-link">
-            <p class="card-text">View Specalisms</p>
-        </a>
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+          <img src="{% static 'SpecialismPNG2.png' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <a href="{% url 'list_specialisms' %}" class="card-link">
+              <p class="card-text">View Specalisms</p>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-{% else %}
+  {% else %}
 
-<h1>Login</h1>
-<br/>
-<form method="POST" action="{% url 'home' %}">
+  <h1>Login</h1>
+  <br />
+  <form method="POST" action="{% url 'home' %}">
     {% csrf_token %}
     <form>
-        <div class="mb-3">
-          <input type="text" class="form-control" name="username", placeholder="Username" required>
-        </div>
-        <br/>
-        <div class="mb-3">
-          <input type="password" class="form-control" name="password", placeholder="password" required>
-        </div>
-        <br/>
-        <button type="Login" class="btn btn-secondary">Submit</button>
-      </form>
+      <div class="mb-3">
+        <input type="text" class="form-control" name="username" , placeholder="Username" required>
+      </div>
+      <br />
+      <div class="mb-3">
+        <input type="password" class="form-control" name="password" , placeholder="password" required>
+      </div>
+      <br />
+      <button type="Login" class="btn btn-secondary">Submit</button>
+    </form>
 
 </div>
 
