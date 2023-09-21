@@ -3,6 +3,7 @@ import pytest
 from django.urls import reverse
 from website.models import Doctor_Record, Hospital_Record, Doctor_Specialism
 
+#Testing Various Views for a 200 response
 
 @pytest.mark.django_db
 def test_list_hospitals_view_returns_200(client):

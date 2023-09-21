@@ -1,6 +1,7 @@
 from django.urls import path
 from django.conf.urls import handler404, handler500
 from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
 from . import views
 
 urlpatterns = [
@@ -39,7 +40,10 @@ urlpatterns = [
     path('admin_templates/admin_update_user_password/<int:pk>/', views.admin_update_user_password, name='admin_update_user_password'),
     path('delete_user/<int:pk>', views.delete_user, name='delete_user'),
     #User Password Reset
-    path('update_user_password/<int:pk>', auth_views.PasswordChangeView.as_view(template_name='update_user_password.html'), name='update_user_password'),
+    path('update_user_password/<int:pk>', auth_views.PasswordChangeView.as_view(
+        template_name='update_user_password.html',
+        success_url=reverse_lazy('home')  # Redirect to the 'home' URL after password change
+    ), name='update_user_password'),
 ]
 
 handler404 = 'website.views.custom_404'
